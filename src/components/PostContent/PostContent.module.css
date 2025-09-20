@@ -1,0 +1,18 @@
+.header {
+  margin-top: 1rem;
+}
+
+.date,
+.author {
+  color: var(--secondary-txt-color);
+}
+
+.author {
+  margin-top: 0.25rem;
+  padding-bottom: 1rem;
+}
+
+.content {
+  border-top: 1px solid var(--border-color);
+  padding-top: 2rem;
+}

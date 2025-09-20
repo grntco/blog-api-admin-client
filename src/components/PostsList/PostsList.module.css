@@ -1,0 +1,61 @@
+.listContainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.postsList {
+  list-style-type: none;
+  margin: 1rem 0rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.post {
+  border-radius: 8px;
+}
+
+.post:hover {
+  background-color: var(--secondary-bg-color);
+  box-shadow: var(--box-shadow);
+  -webkit-box-shadow: var(--box-shadow);
+  -moz-box-shadow: var(--box-shadow);
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  gap: 1rem;
+  flex-wrap: wrap;
+  color: var(--secondary-txt-color);
+}
+
+.link:hover {
+  color: var(--primary-txt-color);
+  text-decoration: none;
+}
+
+.title {
+  flex-grow: 1;
+  font-size: 1.2rem;
+}
+
+.pagesList {
+  list-style-type: none;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagesList a {
+  color: var(--secondary-txt-color);
+}
+
+.pagesList a:hover,
+.pagesList a.active {
+  color: var(--primary-txt-color);
+}

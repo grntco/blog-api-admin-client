@@ -1,0 +1,67 @@
+.tableContainer {
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: var(--secondary-bg-color);
+  box-shadow: var(--box-shadow);
+  -webkit-box-shadow: var(--box-shadow);
+  -moz-box-shadow: var(--box-shadow);
+}
+
+.table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+.table thead th {
+  text-align: left;
+}
+
+.table tbody tr {
+  border-top: 1px solid var(--border-color);
+}
+
+.table th,
+.table td {
+  padding: 1rem;
+  border: none;
+}
+
+.status {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.9rem;
+  color: var(--secondary-txt-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.status.published {
+  background-color: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+
+.editLink {
+  color: var(--secondary-txt-color);
+}
+
+.editLink:hover {
+  color: var(--primary-txt-color);
+}
+
+.pagesList {
+  list-style-type: none;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagesList a {
+  color: var(--secondary-txt-color);
+}
+
+.pagesList a:hover,
+.pagesList a.active {
+  color: var(--primary-txt-color);
+}

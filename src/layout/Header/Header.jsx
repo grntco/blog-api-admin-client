@@ -12,8 +12,8 @@ const Header = () => {
       text: "About",
     },
     {
-      path: "blog",
-      text: "Blog",
+      path: "posts",
+      text: "All Posts",
     },
   ];
 
@@ -30,7 +30,7 @@ const Header = () => {
       <div className="container">
         <nav className={styles.nav}>
           <Link to={"/"} className={styles.logo}>
-            A Silly Blog
+            Blog API - Admin Dashboard
           </Link>
           <ul className={styles.navList}>
             {navLinks.map((link, index) => {

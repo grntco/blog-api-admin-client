@@ -2,6 +2,7 @@ import Alert from "../components/Alert/Alert.jsx";
 import PagesList from "../components/PagesList/PagesList.jsx";
 import PostsTable from "../components/PostsTable/PostsTable.jsx";
 import SearchForm from "../components/SearchForm/SearchForm.jsx";
+import PublishedForm from "../components/PublishedForm/PublishedForm.jsx";
 import useFetch from "../hooks/api/useFetch.jsx";
 import { Link, useParams } from "react-router";
 import { useState } from "react";
@@ -15,8 +16,6 @@ const Posts = () => {
   if (loading) return "loading...";
   if (error) return "error";
 
-  console.log(data);
-
   const posts = data.posts ?? [];
   const prevSearch = data.formData?.search;
   const pageData = {
@@ -29,6 +28,7 @@ const Posts = () => {
       <section>
         <Alert />
         <h1>Posts</h1>
+        <PublishedForm urlBase={urlBase} currentUrl={url} setUrl={setUrl} />
         <SearchForm prevSearch={prevSearch} urlBase={urlBase} setUrl={setUrl} />
         <PostsTable posts={posts} />
         <PagesList pageData={pageData} />

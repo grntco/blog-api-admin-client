@@ -25,7 +25,7 @@ const PostForm = ({ post = null }) => {
 
     try {
       const url = post
-        ? `http://localhost:3000/posts/${post.id}`
+        ? `http://localhost:3000/posts/${post?.id}`
         : `http://localhost:3000/posts`;
 
       const data = post

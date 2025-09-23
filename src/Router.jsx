@@ -37,6 +37,10 @@ const Router = () => {
           path: "posts/:postId/edit",
           element: <EditPost />,
         },
+        {
+          path: "login",
+          element: <Login />,
+        },
       ],
     },
   ]);

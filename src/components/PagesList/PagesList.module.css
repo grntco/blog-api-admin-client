@@ -1,0 +1,16 @@
+.pagesList {
+  list-style-type: none;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagesList a {
+  color: var(--secondary-txt-color);
+}
+
+.pagesList a:hover,
+.pagesList a.active {
+  color: var(--primary-txt-color);
+}

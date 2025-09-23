@@ -13,7 +13,15 @@ const Header = () => {
     },
     {
       path: "posts",
-      text: "All Posts",
+      text: "Posts",
+    },
+    {
+      path: "comments",
+      text: "Comments",
+    },
+    {
+      path: "users",
+      text: "Users",
     },
   ];
 

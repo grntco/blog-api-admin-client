@@ -1,5 +1,7 @@
 .btnsContainer {
+  margin-top: 1rem;
   display: flex;
+  justify-content: space-between;
   gap: 0.5rem;
 }
 
@@ -22,7 +24,6 @@
 
 .inputsContainer label {
   font-size: 1rem;
-  /* font-weight: 600; */
 }
 
 .flexRow {
@@ -37,19 +38,14 @@
   gap: 0.25rem;
 }
 
-.input,
-.statusSelect {
-  padding: 0.25rem 0.5rem;
-  background-color: var(--primary-bg-color);
-  border: 1px solid var(--border-color);
-  font-family: var(--font-lexend);
-  border-radius: 4px;
-}
-
 .titleInput {
   padding: 0.25rem 0.5rem;
   font-size: 2rem;
   font-weight: bold;
+}
+
+.slugInput {
+  width: 100%;
 }
 
 .contentInput {

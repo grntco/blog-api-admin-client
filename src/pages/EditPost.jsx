@@ -15,7 +15,9 @@ const EditPost = () => {
 
   return (
     <section>
-      <Link to={"/posts"}>View all posts</Link>
+      <Link className="grey" to={"/posts"}>
+        View all posts
+      </Link>
       <h1>Edit Post</h1>
       <PostForm post={post} />
     </section>

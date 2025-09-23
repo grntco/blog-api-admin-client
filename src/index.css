@@ -80,10 +80,28 @@ a:hover {
   text-decoration: underline;
 }
 
+a.grey {
+  color: var(--secondary-txt-color);
+}
+
+a.grey:hover {
+  color: var(--primary-txt-color);
+}
+
 .info-text {
   margin-top: 0.5rem;
   font-size: 1rem;
   color: var(--secondary-txt-color);
+}
+
+input,
+textarea,
+select {
+  padding: 0.25rem 0.5rem;
+  background-color: var(--primary-bg-color);
+  border: 1px solid var(--border-color);
+  font-family: var(--font-lexend);
+  border-radius: 4px;
 }
 
 /* CONTENT */

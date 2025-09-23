@@ -1,0 +1,10 @@
+.form {
+    margin: 0.5rem 0 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.searchInput {
+    width: 400px;
+    min-width: none;
+}

@@ -5,6 +5,7 @@ import Error from "./pages/Error";
 import About from "./pages/About";
 import Posts from "./pages/Posts";
 import EditPost from "./pages/EditPost";
+import AddPost from "./pages/AddPost";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import { AuthProvider } from "./hooks/auth/AuthContext";
@@ -29,21 +30,13 @@ const Router = () => {
           element: <Posts />,
         },
         {
+          path: "posts/add",
+          element: <AddPost />,
+        },
+        {
           path: "posts/:postId/edit",
           element: <EditPost />,
         },
-        // {
-        //   path: "blog/:postId/:postSlug",
-        //   element: <Post />,
-        // },
-        // {
-        //   path: "register",
-        //   element: <Register />,
-        // },
-        // {
-        //   path: "login",
-        //   element: <Login />,
-        // },
       ],
     },
   ]);

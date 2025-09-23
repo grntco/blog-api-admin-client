@@ -27,6 +27,17 @@
   border: none;
 }
 
+.postCol {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.slug {
+  font-size: 0.9rem;
+  color: var(--secondary-txt-color);
+}
+
 .status {
   padding: 0.25rem 0.75rem;
   font-size: 0.9rem;
@@ -39,29 +50,4 @@
   background-color: var(--green);
   border-color: var(--green);
   color: #fff;
-}
-
-.editLink {
-  color: var(--secondary-txt-color);
-}
-
-.editLink:hover {
-  color: var(--primary-txt-color);
-}
-
-.pagesList {
-  list-style-type: none;
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-  justify-content: center;
-}
-
-.pagesList a {
-  color: var(--secondary-txt-color);
-}
-
-.pagesList a:hover,
-.pagesList a.active {
-  color: var(--primary-txt-color);
 }

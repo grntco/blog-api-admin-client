@@ -7,6 +7,7 @@ import Posts from "./pages/Posts";
 import EditPost from "./pages/EditPost";
 import AddPost from "./pages/AddPost";
 import Users from "./pages/Users";
+import Comments from "./pages/Comments";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import { AuthProvider } from "./hooks/auth/AuthContext";
@@ -43,6 +44,11 @@ const Router = () => {
         {
           path: "users/:page?",
           element: <Users />,
+        },
+        // Comments
+        {
+          path: "comments/:page?",
+          element: <Comments />,
         },
         // {
         //   path: "users/add",

@@ -1,16 +1,21 @@
-const PublishedForm = ({ urlBase, currentUrl, setUrl }) => {
-  const checked = currentUrl && currentUrl.includes("published=true");
+import { useNavigate } from "react-router";
+
+const PublishedForm = ({ path, urlBase, currentUrl, setUrl }) => {
+  const navigate = useNavigate();
+  const parsedCurrentUrl = new URL(currentUrl, "http://localhost:3000");
+  const checked = parsedCurrentUrl.searchParams.get("published") === "true";
 
   const handleOnChange = () => {
-    let newUrl;
-    if (!checked) {
-      const separator = urlBase.includes("?") ? "&" : "?";
-      newUrl = `${urlBase}${separator}published=true`;
+    const newUrl = new URL(urlBase, `http://localhost:3000/${path}`);
+    if (checked) {
+      newUrl.searchParams.delete("published");
     } else {
-      newUrl = urlBase;
+      newUrl.searchParams.set("published", "true");
     }
+    newUrl.searchParams.delete("page");
 
-    setUrl(newUrl);
+    navigate(`/${path}`);
+    setUrl(newUrl.toString());
   };
 
   return (

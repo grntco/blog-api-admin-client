@@ -6,6 +6,7 @@ import About from "./pages/About";
 import Posts from "./pages/Posts";
 import EditPost from "./pages/EditPost";
 import AddPost from "./pages/AddPost";
+import Users from "./pages/Users";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import { AuthProvider } from "./hooks/auth/AuthContext";
@@ -25,6 +26,7 @@ const Router = () => {
           path: "about",
           element: <About />,
         },
+        // Posts
         {
           path: "posts/:page?",
           element: <Posts />,
@@ -37,6 +39,19 @@ const Router = () => {
           path: "posts/:postId/edit",
           element: <EditPost />,
         },
+        // Users
+        {
+          path: "users/:page?",
+          element: <Users />,
+        },
+        // {
+        //   path: "users/add",
+        //   element: <AddPost />,
+        // },
+        // {
+        //   path: "users/:userId/edit",
+        //   element: <EditPost />,
+        // },
         {
           path: "login",
           element: <Login />,

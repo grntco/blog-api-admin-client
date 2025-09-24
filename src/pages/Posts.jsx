@@ -1,6 +1,6 @@
 import Alert from "../components/Alert/Alert.jsx";
 import PagesList from "../components/PagesList/PagesList.jsx";
-import PostsTable from "../components/PostsTable/PostsTable.jsx";
+import PostsTable from "../components/Tables/PostsTable.jsx";
 import SearchForm from "../components/SearchForm/SearchForm.jsx";
 import PublishedForm from "../components/PublishedForm/PublishedForm.jsx";
 import useFetch from "../hooks/api/useFetch.jsx";
@@ -28,10 +28,20 @@ const Posts = () => {
       <section>
         <Alert />
         <h1>Posts</h1>
-        <PublishedForm urlBase={urlBase} currentUrl={url} setUrl={setUrl} />
-        <SearchForm prevSearch={prevSearch} urlBase={urlBase} setUrl={setUrl} />
+        <PublishedForm
+          path={"posts"}
+          urlBase={urlBase}
+          currentUrl={url}
+          setUrl={setUrl}
+        />
+        <SearchForm
+          path={"posts"}
+          prevSearch={prevSearch}
+          urlBase={urlBase}
+          setUrl={setUrl}
+        />
         <PostsTable posts={posts} />
-        <PagesList pageData={pageData} />
+        <PagesList path={"posts"} pageData={pageData} />
       </section>
     </div>
   );

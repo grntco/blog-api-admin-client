@@ -1,19 +1,24 @@
 import styles from "./SearchForm.module.css";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
-const SearchForm = ({ prevSearch, urlBase, setUrl }) => {
+const SearchForm = ({ path, prevSearch, urlBase, setUrl }) => {
   const [search, setSearch] = useState(prevSearch || "");
+  const navigate = useNavigate();
 
   const handleSearch = async (e) => {
     e.preventDefault();
+    const currentUrl = new URL(urlBase, `http://localhost:3000/${path}`);
 
-    const newUrl = !search.trim()
-      ? urlBase
-      : urlBase +
-        (!urlBase.includes("?") ? "?" : "") +
-        `search=${search.trim()}`;
+    if (!search.trim()) {
+      currentUrl.searchParams.delete("search");
+    } else {
+      currentUrl.searchParams.set("search", search);
+    }
+    currentUrl.searchParams.delete("page");
 
-    setUrl(newUrl);
+    navigate(`/${path}`);
+    setUrl(currentUrl.toString());
   };
 
   return (

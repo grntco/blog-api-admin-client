@@ -1,4 +1,4 @@
-import styles from "./PostsTable.module.css";
+import styles from "./Table.module.css";
 import { Link } from "react-router";
 import formatDate from "../../utils/formatDate";
 

@@ -1,4 +1,5 @@
 .pagesList {
+  margin-top: 1rem;
   list-style-type: none;
   display: flex;
   gap: 0.5rem;

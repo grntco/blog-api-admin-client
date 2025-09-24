@@ -16,7 +16,16 @@ const useFetch = (url) => {
         setLoading(true);
         setError(null);
 
-        const response = await fetch(url);
+        const token = localStorage.getItem("token");
+        const headers = {
+          "Content-Type": "application/json",
+          ...(token && { Authorization: `Bearer ${token}` }),
+        };
+
+        const response = await fetch(url, {
+          method: "GET",
+          headers,
+        });
 
         if (!response.ok) {
           throw new Error(

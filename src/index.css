@@ -73,6 +73,7 @@ section.hero {
 a {
   text-decoration: none;
   color: var(--primary-accent-color);
+  cursor: pointer;
 }
 
 a:hover {

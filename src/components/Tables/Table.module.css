@@ -27,6 +27,9 @@
   border: none;
 }
 
+
+/*  */
+
 .postCol {
   display: flex;
   flex-direction: column;

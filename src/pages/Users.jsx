@@ -1,10 +1,11 @@
-import useFetch from "../hooks/api/useFetch.jsx";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router";
 import Alert from "../components/Alert/Alert.jsx";
 import SearchForm from "../components/SearchForm/SearchForm.jsx";
 import UsersTable from "../components/Tables/UsersTable.jsx";
 import PagesList from "../components/PagesList/PagesList.jsx";
+import NoResults from "../components/Tables/NoResults.jsx";
+import useFetch from "../hooks/api/useFetch.jsx";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router";
 
 const Users = () => {
   const { page } = useParams();
@@ -45,18 +46,11 @@ const Users = () => {
         {users.length > 0 ? (
           <UsersTable users={users} />
         ) : (
-          <p>
-            No results found{prevSearch ? " for '" + prevSearch + "'" : ""}.{" "}
-            <a
-              onClick={(e) => {
-                e.preventDefault();
-                setUrl(urlBase);
-              }}
-            >
-              View all results
-            </a>
-            .
-          </p>
+          <NoResults
+            prevSearch={prevSearch}
+            urlBase={urlBase}
+            setUrl={setUrl}
+          />
         )}
         <PagesList
           path={"users"}

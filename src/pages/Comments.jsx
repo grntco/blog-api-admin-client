@@ -1,10 +1,11 @@
-import useFetch from "../hooks/api/useFetch.jsx";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router";
 import Alert from "../components/Alert/Alert.jsx";
 import SearchForm from "../components/SearchForm/SearchForm.jsx";
 import CommentsTable from "../components/Tables/CommentsTable.jsx";
 import PagesList from "../components/PagesList/PagesList.jsx";
+import NoResults from "../components/Tables/NoResults.jsx";
+import useFetch from "../hooks/api/useFetch.jsx";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router";
 
 const Comments = () => {
   const { page } = useParams();
@@ -41,21 +42,15 @@ const Comments = () => {
           urlBase={urlBase}
           setUrl={setUrl}
         />
+
         {comments.length > 0 ? (
           <CommentsTable comments={comments} />
         ) : (
-          <p>
-            No results found{prevSearch ? " for '" + prevSearch + "'" : ""}.{" "}
-            <a
-              onClick={(e) => {
-                e.preventDefault();
-                setUrl(urlBase);
-              }}
-            >
-              View all results
-            </a>
-            .
-          </p>
+          <NoResults
+            prevSearch={prevSearch}
+            urlBase={urlBase}
+            setUrl={setUrl}
+          />
         )}
         <PagesList
           path={"comments"}

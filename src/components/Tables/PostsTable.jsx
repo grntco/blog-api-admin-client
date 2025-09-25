@@ -23,7 +23,11 @@ const PostsTable = ({ posts }) => {
                   <span>{post.title}</span>
                   <span className={styles.slug}>{post.slug}</span>
                 </td>
-                <td>{post.author.firstName + " " + post.author.lastName}</td>
+                <td>
+                  <Link to={`/users/${post.author.id}/edit`} className="grey">
+                    {post.author.firstName + " " + post.author.lastName}
+                  </Link>
+                </td>
                 <td>{formatDate(post.updatedAt)}</td>
                 <td>
                   <span

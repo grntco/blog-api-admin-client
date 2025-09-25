@@ -1,3 +1,4 @@
+import styles from "./PublishedForm.module.css";
 import { useNavigate } from "react-router";
 
 const PublishedForm = ({ path, urlBase, currentUrl, setUrl }) => {
@@ -19,7 +20,7 @@ const PublishedForm = ({ path, urlBase, currentUrl, setUrl }) => {
   };
 
   return (
-    <form>
+    <form className={styles.form}>
       <label htmlFor="published">Show published only: </label>
       <input
         id="published"

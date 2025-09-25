@@ -1,6 +1,6 @@
 import styles from "./Table.module.css";
-import formatDate from "../../utils/formatDate";
 import { Link } from "react-router";
+import formatDate from "../../utils/formatDate";
 
 const CommentsTable = ({ comments }) => {
   return (
@@ -8,22 +8,26 @@ const CommentsTable = ({ comments }) => {
       <table className={styles.table}>
         <thead>
           <tr>
-            <th>User</th>
             <th>Comment</th>
-            <th>On Post</th>
+            <th>User</th>
+            <th>Post</th>
             <th>Date</th>
             <th>Options</th>
           </tr>
         </thead>
         <tbody>
           {comments.map((comment, index) => {
-            // console.log(comment.)
             return (
               <tr key={index}>
-                <td>
-                  {comment.author.firstName + " " + comment.author.lastName}
-                </td>
                 <td>{comment.content}</td>
+                <td>
+                  <Link
+                    to={`/users/${comment.author.id}/edit`}
+                    className="grey"
+                  >
+                    {comment.author.firstName + " " + comment.author.lastName}
+                  </Link>
+                </td>
                 <td>
                   <Link to={`/posts/${comment.post.id}/edit`} className="grey">
                     {comment?.post.title}

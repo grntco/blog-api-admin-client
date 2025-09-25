@@ -3,21 +3,31 @@ import PagesList from "../components/PagesList/PagesList.jsx";
 import PostsTable from "../components/Tables/PostsTable.jsx";
 import SearchForm from "../components/SearchForm/SearchForm.jsx";
 import PublishedForm from "../components/PublishedForm/PublishedForm.jsx";
+import NoResults from "../components/Tables/NoResults.jsx";
 import useFetch from "../hooks/api/useFetch.jsx";
-import { Link, useParams } from "react-router";
-import { useState } from "react";
+import { useParams } from "react-router";
+import { useState, useEffect } from "react";
 
 const Posts = () => {
   const { page } = useParams();
-  const urlBase = `http://localhost:3000/posts${page ? `?page=${page}` : ""}`;
+  const urlBase = `http://localhost:3000/posts${
+    page && page > 1 ? `?page=${page}` : ""
+  }`;
   const [url, setUrl] = useState(urlBase);
   const { data, error, loading } = useFetch(url);
+
+  useEffect(() => {
+    if (!url.includes("search=")) {
+      setUrl(urlBase);
+    }
+  }, [page, urlBase]);
 
   if (loading) return "loading...";
   if (error) return "error";
 
   const posts = data.posts ?? [];
   const prevSearch = data.formData?.search;
+  console.log(prevSearch);
   const pageData = {
     currentPage: data.meta?.currentPage,
     totalPages: data.meta?.totalPages,
@@ -28,20 +38,33 @@ const Posts = () => {
       <section>
         <Alert />
         <h1>Posts</h1>
-        <PublishedForm
-          path={"posts"}
-          urlBase={urlBase}
-          currentUrl={url}
-          setUrl={setUrl}
-        />
         <SearchForm
           path={"posts"}
           prevSearch={prevSearch}
           urlBase={urlBase}
           setUrl={setUrl}
         />
-        <PostsTable posts={posts} />
-        <PagesList path={"posts"} pageData={pageData} />
+        <PublishedForm
+          path={"posts"}
+          urlBase={urlBase}
+          currentUrl={url}
+          setUrl={setUrl}
+        />
+        {posts.length > 0 ? (
+          <PostsTable posts={posts} />
+        ) : (
+          <NoResults
+            prevSearch={prevSearch}
+            urlBase={urlBase}
+            setUrl={setUrl}
+          />
+        )}
+        <PagesList
+          path={"users"}
+          pageData={pageData}
+          urlBase={urlBase}
+          setUrl={setUrl}
+        />
       </section>
     </div>
   );

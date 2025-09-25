@@ -1,6 +1,6 @@
 import styles from "./Table.module.css";
-import formatDate from "../../utils/formatDate";
 import { Link } from "react-router";
+import formatDate from "../../utils/formatDate";
 
 const UsersTable = ({ users }) => {
   return (

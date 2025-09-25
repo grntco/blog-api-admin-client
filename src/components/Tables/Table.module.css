@@ -1,4 +1,5 @@
 .tableContainer {
+  margin-top: 1rem;
   padding: 1rem;
   border-radius: 8px;
   background-color: var(--secondary-bg-color);
@@ -26,9 +27,6 @@
   padding: 1rem;
   border: none;
 }
-
-
-/*  */
 
 .postCol {
   display: flex;

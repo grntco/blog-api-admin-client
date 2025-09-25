@@ -27,16 +27,16 @@ const useFetch = (url) => {
           headers,
         });
 
-        if (!response.ok) {
-          throw new Error(
-            `HTTP Error: ${response.status}: ${response.statusText}`
-          );
-        }
-
         const data = await response.json();
+        
+        if (!response.ok) {
+          setError(data);
+        }
+        
         setData(data);
       } catch (err) {
         setError(err.message || "Error: Something unexpected happened.");
+        console.error(err);
       } finally {
         setLoading(false);
       }

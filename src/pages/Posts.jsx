@@ -15,6 +15,7 @@ const Posts = () => {
   }`;
   const [url, setUrl] = useState(urlBase);
   const { data, error, loading } = useFetch(url);
+  const validationErrors = error?.errors || [];
 
   useEffect(() => {
     if (!url.includes("search=")) {
@@ -23,7 +24,6 @@ const Posts = () => {
   }, [page, urlBase]);
 
   if (loading) return "loading...";
-  if (error) return "error";
 
   const posts = data.posts ?? [];
   const prevSearch = data.formData?.search;
@@ -36,7 +36,12 @@ const Posts = () => {
   return (
     <div>
       <section>
-        <Alert />
+        {validationErrors.length > 0 &&
+          validationErrors.map((error, index) => {
+            return (
+              <Alert key={index} alertMessage={error.msg} alertType={"error"} />
+            );
+          })}
         <h1>Posts</h1>
         <SearchForm
           path={"posts"}

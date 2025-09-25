@@ -14,6 +14,7 @@ const Comments = () => {
   }`;
   const [url, setUrl] = useState(urlBase);
   const { data, error, loading } = useFetch(url);
+  const validationErrors = error?.errors || [];
 
   useEffect(() => {
     if (!url.includes("search=")) {
@@ -22,7 +23,6 @@ const Comments = () => {
   }, [page, urlBase]);
 
   if (loading) return "loading...";
-  if (error) return "error";
 
   const comments = data.comments ?? [];
   const prevSearch = data.formData?.search;
@@ -34,7 +34,12 @@ const Comments = () => {
   return (
     <div>
       <section>
-        <Alert />
+        {validationErrors.length > 0 &&
+          validationErrors.map((error, index) => {
+            return (
+              <Alert key={index} alertMessage={error.msg} alertType={"error"} />
+            );
+          })}
         <h1>Comments</h1>
         <SearchForm
           path={"comments"}

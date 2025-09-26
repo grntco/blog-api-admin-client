@@ -1,0 +1,29 @@
+.deleteBtn {
+  margin-top: 1rem;
+  background-color: var(--red);
+  border-color: var(--red);
+  color: #fff;
+}
+
+.deleteBtn:hover {
+  color: #fff;
+}
+
+.commentContainer {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.flexRow {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.flexCol {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}

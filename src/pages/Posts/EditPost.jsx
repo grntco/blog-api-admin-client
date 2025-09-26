@@ -1,7 +1,7 @@
-import useFetch from "../hooks/api/useFetch";
+import useFetch from "../../hooks/api/useFetch";
 
 import { Link, useParams } from "react-router";
-import PostForm from "../components/PostForm/PostForm";
+import PostForm from "../../components/Forms/PostForm/PostForm";
 
 const EditPost = () => {
   const { postId } = useParams();

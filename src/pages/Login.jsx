@@ -43,7 +43,7 @@ const Login = () => {
 
     try {
       const result = await mutate(
-        "http://localhost:3000/auth/login",
+        "http://localhost:3000/auth/admin/login",
         formData,
         {
           method: "POST",

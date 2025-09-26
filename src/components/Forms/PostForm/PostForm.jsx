@@ -1,8 +1,8 @@
 // import { Link } from "react-router";
 import styles from "./PostForm.module.css";
-import useMutation from "../../hooks/api/useMutation";
+import useMutation from "../../../hooks/api/useMutation";
 import { useState } from "react";
-import useAuth from "../../hooks/auth/useAuth";
+import useAuth from "../../../hooks/auth/useAuth";
 import { useNavigate } from "react-router";
 
 const PostForm = ({ post = null }) => {

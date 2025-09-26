@@ -1,9 +1,9 @@
-import Alert from "../components/Alert/Alert.jsx";
-import SearchForm from "../components/SearchForm/SearchForm.jsx";
-import CommentsTable from "../components/Tables/CommentsTable.jsx";
-import PagesList from "../components/PagesList/PagesList.jsx";
-import NoResults from "../components/Tables/NoResults.jsx";
-import useFetch from "../hooks/api/useFetch.jsx";
+import Alert from "../../components/Alert/Alert.jsx";
+import SearchForm from "../../components/Forms/SearchForm/SearchForm.jsx";
+import CommentsTable from "../../components/Tables/CommentsTable.jsx";
+import PagesList from "../../components/PagesList/PagesList.jsx";
+import NoResults from "../../components/Tables/NoResults.jsx";
+import useFetch from "../../hooks/api/useFetch.jsx";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 

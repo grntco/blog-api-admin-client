@@ -11,6 +11,8 @@ const useFetch = (url) => {
       return;
     }
 
+    console.log(url)
+
     const fetchData = async () => {
       try {
         setLoading(true);
@@ -28,11 +30,11 @@ const useFetch = (url) => {
         });
 
         const data = await response.json();
-        
+
         if (!response.ok) {
           setError(data);
         }
-        
+
         setData(data);
       } catch (err) {
         setError(err.message || "Error: Something unexpected happened.");

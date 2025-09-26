@@ -1,0 +1,43 @@
+.btnsContainer {
+  margin-top: 2rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.deleteBtn {
+  background-color: var(--red);
+  border-color: var(--red);
+  color: #fff;
+}
+
+.deleteBtn:hover {
+  color: #fff;
+}
+
+.inputsContainer {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.inputsContainer label {
+  font-size: 1rem;
+}
+
+.flexRow {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.flexCol {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.nameInput,
+.emailInput {
+  width: 300px;
+}

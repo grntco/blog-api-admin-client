@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import PostForm from "../components/PostForm/PostForm";
+import PostForm from "../../components/Forms/PostForm/PostForm";
 
 const AddPost = () => {
   return (

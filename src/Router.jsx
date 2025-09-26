@@ -3,11 +3,13 @@ import Layout from "./layout/Layout";
 import Home from "./pages/Home";
 import Error from "./pages/Error";
 import About from "./pages/About";
-import Posts from "./pages/Posts";
-import EditPost from "./pages/EditPost";
-import AddPost from "./pages/AddPost";
-import Users from "./pages/Users";
-import Comments from "./pages/Comments";
+import Posts from "./pages/Posts/Posts";
+import EditPost from "./pages/Posts/EditPost";
+import AddPost from "./pages/Posts/AddPost";
+import Users from "./pages/Users/Users";
+import EditUser from "./pages/Users/EditUser";
+import Comments from "./pages/Comments/Comments";
+import EditComment from "./pages/Comments/EditComment";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import { AuthProvider } from "./hooks/auth/AuthContext";
@@ -45,19 +47,20 @@ const Router = () => {
           path: "users/:page?",
           element: <Users />,
         },
+        {
+          path: "users/:userId/edit",
+          element: <EditUser />,
+        },
         // Comments
         {
           path: "comments/:page?",
           element: <Comments />,
         },
-        // {
-        //   path: "users/add",
-        //   element: <AddPost />,
-        // },
-        // {
-        //   path: "users/:userId/edit",
-        //   element: <EditPost />,
-        // },
+        {
+          path: "comments/:commentId/edit",
+          element: <EditComment />,
+        },
+        // Auth
         {
           path: "login",
           element: <Login />,

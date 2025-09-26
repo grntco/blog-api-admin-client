@@ -9,7 +9,7 @@ const CommentsTable = ({ comments }) => {
         <thead>
           <tr>
             <th>Comment</th>
-            <th>User</th>
+            <th>Author</th>
             <th>Post</th>
             <th>Date</th>
             <th>Options</th>
@@ -17,9 +17,14 @@ const CommentsTable = ({ comments }) => {
         </thead>
         <tbody>
           {comments.map((comment, index) => {
+            const truncatedContent =
+              comment.content.length > 25
+                ? comment.content.split("", 25).join("") + "..."
+                : comment.content;
+
             return (
               <tr key={index}>
-                <td>{comment.content}</td>
+                <td>{truncatedContent}</td>
                 <td>
                   <Link
                     to={`/users/${comment.author.id}/edit`}

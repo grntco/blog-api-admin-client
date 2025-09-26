@@ -2,10 +2,12 @@ import useFetch from "../../hooks/api/useFetch";
 
 import { Link, useParams } from "react-router";
 import PostForm from "../../components/Forms/PostForm/PostForm";
+import getApiUrl from "../../utils/getApiUrl";
 
 const EditPost = () => {
   const { postId } = useParams();
-  const url = `http://localhost:3000/posts/${postId}`;
+  const API_BASE_URL = getApiUrl();
+  const url = `${API_BASE_URL}/posts/${postId}`;
   const { data, error, loading } = useFetch(url);
 
   const post = data;

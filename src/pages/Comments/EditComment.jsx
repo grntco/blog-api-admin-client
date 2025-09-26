@@ -1,10 +1,12 @@
 import useFetch from "../../hooks/api/useFetch";
 import { Link, useParams } from "react-router";
 import CommentForm from "../../components/Forms/CommentForm/CommentForm";
+import getApiUrl from "../../utils/getApiUrl";
 
 const EditComment = () => {
   const { commentId } = useParams();
-  const url = `http://localhost:3000/comments/${commentId}`;
+  const API_BASE_URL = getApiUrl();
+  const url = `${API_BASE_URL}/comments/${commentId}`;
   const { data, error, loading } = useFetch(url);
 
   const comment = data;

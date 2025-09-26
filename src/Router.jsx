@@ -67,8 +67,8 @@ const Router = () => {
         },
         // 404
         {
-          path: "*", // This catches all unmatched routes
-          element: <NotFound />, // Your 404 component
+          path: "*",
+          element: <NotFound />,
         },
       ],
     },

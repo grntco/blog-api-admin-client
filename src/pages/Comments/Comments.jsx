@@ -6,10 +6,12 @@ import NoResults from "../../components/Tables/NoResults.jsx";
 import useFetch from "../../hooks/api/useFetch.jsx";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import getApiUrl from "../../utils/getApiUrl.js";
 
 const Comments = () => {
   const { page } = useParams();
-  const urlBase = `http://localhost:3000/comments${
+  const API_BASE_URL = getApiUrl();
+  const urlBase = `${API_BASE_URL}/comments${
     page && page > 1 ? `?page=${page}` : ""
   }`;
   const [url, setUrl] = useState(urlBase);

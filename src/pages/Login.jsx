@@ -3,6 +3,7 @@ import AuthForm from "../components/AuthForm/AuthForm";
 import useMutation from "../hooks/api/useMutation";
 import useAuth from "../hooks/auth/useAuth";
 import { useNavigate } from "react-router";
+import getApiUrl from "../utils/getApiUrl";
 
 const Login = () => {
   const { mutate, loading, error } = useMutation();
@@ -14,6 +15,7 @@ const Login = () => {
   });
   const { login } = useAuth();
   const navigate = useNavigate();
+  const API_BASE_URL = getApiUrl(0);
 
   useEffect(() => {
     if (error && error.formData) {
@@ -43,7 +45,7 @@ const Login = () => {
 
     try {
       const result = await mutate(
-        "http://localhost:3000/auth/admin/login",
+        `${API_BASE_URL}/auth/admin/login`,
         formData,
         {
           method: "POST",

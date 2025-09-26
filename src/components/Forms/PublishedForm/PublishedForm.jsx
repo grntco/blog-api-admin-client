@@ -1,13 +1,15 @@
+import getApiUrl from "../../../utils/getApiUrl";
 import styles from "./PublishedForm.module.css";
 import { useNavigate } from "react-router";
 
 const PublishedForm = ({ path, urlBase, currentUrl, setUrl }) => {
   const navigate = useNavigate();
-  const parsedCurrentUrl = new URL(currentUrl, "http://localhost:3000");
+  const API_BASE_URL = getApiUrl();
+  const parsedCurrentUrl = new URL(currentUrl, API_BASE_URL);
   const checked = parsedCurrentUrl.searchParams.get("published") === "true";
 
   const handleOnChange = () => {
-    const newUrl = new URL(urlBase, `http://localhost:3000/${path}`);
+    const newUrl = new URL(urlBase, `${API_BASE_URL}/${path}`);
     if (checked) {
       newUrl.searchParams.delete("published");
     } else {

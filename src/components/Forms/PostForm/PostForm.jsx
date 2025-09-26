@@ -4,6 +4,7 @@ import { useState } from "react";
 import useAuth from "../../../hooks/auth/useAuth";
 import { useNavigate } from "react-router";
 import Alert from "../../Alert/Alert";
+import getApiUrl from "../../../utils/getApiUrl";
 
 const PostForm = ({ post = null }) => {
   const [title, setTitle] = useState(post?.title || "");
@@ -14,6 +15,7 @@ const PostForm = ({ post = null }) => {
   const { mutate, error, loading } = useMutation();
   const { user } = useAuth();
   const navigate = useNavigate();
+  const API_BASE_URL = getApiUrl();
 
   const btnText = post ? "Update" : "Create Post";
   const btnLoadingText = post ? "Updating..." : "Creating...";
@@ -25,8 +27,8 @@ const PostForm = ({ post = null }) => {
 
     try {
       const url = post
-        ? `http://localhost:3000/posts/${post?.id}`
-        : `http://localhost:3000/posts`;
+        ? `${API_BASE_URL}/posts/${post?.id}`
+        : `${API_BASE_URL}/posts`;
 
       const data = post
         ? {
@@ -63,7 +65,7 @@ const PostForm = ({ post = null }) => {
 
     try {
       const result = await mutate(
-        `http://localhost:3000/posts/${post?.id}`,
+        `${API_BASE_URL}/posts/${post?.id}`,
         {},
         { method: "DELETE" }
       );

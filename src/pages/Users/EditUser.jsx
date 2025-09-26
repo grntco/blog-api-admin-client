@@ -1,10 +1,12 @@
 import useFetch from "../../hooks/api/useFetch";
 import { Link, useParams } from "react-router";
 import UserForm from "../../components/Forms/UserForm/UserForm";
+import getApiUrl from "../../utils/getApiUrl";
 
 const EditUser = () => {
   const { userId } = useParams();
-  const url = `http://localhost:3000/users/${userId}`;
+  const API_BASE_URL = getApiUrl();
+  const url = `${API_BASE_URL}/users/${userId}`;
   const { data, error, loading } = useFetch(url);
 
   const user = data;

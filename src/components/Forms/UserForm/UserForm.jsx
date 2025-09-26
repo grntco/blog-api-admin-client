@@ -2,6 +2,7 @@ import styles from "./UserForm.module.css";
 import useMutation from "../../../hooks/api/useMutation";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import getApiUrl from "../../../utils/getApiUrl";
 
 // Only used in EditUser, since admins can't add new users
 const UserForm = ({ user = null }) => {
@@ -12,6 +13,7 @@ const UserForm = ({ user = null }) => {
 
   const { mutate, error, loading } = useMutation();
   const navigate = useNavigate();
+  const API_BASE_URL = getApiUrl();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,7 +21,7 @@ const UserForm = ({ user = null }) => {
     if (!firstName.trim() || !lastName.trim() || !email.trim()) return;
 
     try {
-      const url = `http://localhost:3000/users/${user?.id}`;
+      const url = `${API_BASE_URL}/users/${user?.id}`;
 
       const data = {
         firstName: firstName.trim(),
@@ -48,7 +50,7 @@ const UserForm = ({ user = null }) => {
 
     try {
       const result = await mutate(
-        `http://localhost:3000/users/${user?.id}`,
+        `${API_BASE_URL}/users/${user?.id}`,
         {},
         { method: "DELETE" }
       );

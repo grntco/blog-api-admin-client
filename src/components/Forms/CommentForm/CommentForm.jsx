@@ -3,18 +3,20 @@ import useMutation from "../../../hooks/api/useMutation";
 import { useNavigate } from "react-router";
 import formatDate from "../../../utils/formatDate";
 import { Link } from "react-router";
+import getApiUrl from "../../../utils/getApiUrl";
 
 // Only used in EditComment, since admins can't add new comments for users
 const CommentForm = ({ comment = null }) => {
   const { mutate, error, loading } = useMutation();
   const navigate = useNavigate();
+  const API_BASE_URL = getApiUrl();
 
   const handleDelete = async (e) => {
     e.preventDefault();
 
     try {
       const result = await mutate(
-        `http://localhost:3000/comments/${comment?.id}`,
+        `${API_BASE_URL}/comments/${comment?.id}`,
         {},
         { method: "DELETE" }
       );

@@ -1,14 +1,16 @@
 import styles from "./SearchForm.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import getApiUrl from "../../../utils/getApiUrl";
 
 const SearchForm = ({ path, prevSearch, urlBase, setUrl }) => {
   const [search, setSearch] = useState(prevSearch || "");
   const navigate = useNavigate();
+  const API_BASE_URL = getApiUrl();
 
   const handleSearch = async (e) => {
     e.preventDefault();
-    const currentUrl = new URL(urlBase, `http://localhost:3000/${path}`);
+    const currentUrl = new URL(urlBase, `${API_BASE_URL}/${path}`);
 
     if (!search.trim()) {
       currentUrl.searchParams.delete("search");

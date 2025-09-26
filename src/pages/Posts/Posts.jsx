@@ -8,10 +8,12 @@ import useFetch from "../../hooks/api/useFetch.jsx";
 import { useParams } from "react-router";
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
+import getApiUrl from "../../utils/getApiUrl.js";
 
 const Posts = () => {
   const { page } = useParams();
-  const urlBase = `http://localhost:3000/posts${
+  const API_BASE_URL = getApiUrl();
+  const urlBase = `${API_BASE_URL}/posts${
     page && page > 1 ? `?page=${page}` : ""
   }`;
   const [url, setUrl] = useState(urlBase);

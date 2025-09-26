@@ -1,9 +1,9 @@
-// import { Link } from "react-router";
 import styles from "./PostForm.module.css";
 import useMutation from "../../../hooks/api/useMutation";
 import { useState } from "react";
 import useAuth from "../../../hooks/auth/useAuth";
 import { useNavigate } from "react-router";
+import Alert from "../../Alert/Alert";
 
 const PostForm = ({ post = null }) => {
   const [title, setTitle] = useState(post?.title || "");
@@ -47,7 +47,6 @@ const PostForm = ({ post = null }) => {
         method: post ? "PATCH" : "POST",
       });
 
-      console.log(result);
       if (!error && result && result.success) {
         navigate("/posts", {
           replace: true,
@@ -69,7 +68,6 @@ const PostForm = ({ post = null }) => {
         { method: "DELETE" }
       );
 
-      console.log(result);
       if (!error && result && result.success) {
         navigate("/posts", {
           replace: true,
@@ -82,69 +80,77 @@ const PostForm = ({ post = null }) => {
   };
 
   return (
-    <form>
-      <div className={styles.btnsContainer}>
-        <button className="btn" type="submit" onClick={handleSubmit}>
-          {loading ? btnLoadingText : btnText}
-        </button>
-        {post && (
-          <button
-            className={`btn ${styles.deleteBtn}`}
-            onClick={(e) => {
-              confirm("Are you sure you want to delete this post?");
-              handleDelete(e);
-            }}
-          >
-            {loading ? "Deleting" : "Delete (permanent)"}
+    <>
+      {error && (
+        <Alert
+          alertMessage={error.error || error.message || "An error occurred."}
+          alertType="error"
+        />
+      )}
+      <form>
+        <div className={styles.btnsContainer}>
+          <button className="btn" type="submit" onClick={handleSubmit}>
+            {loading ? btnLoadingText : btnText}
           </button>
-        )}
-      </div>
-      <div className={styles.inputsContainer}>
-        <div className={styles.flexCol}>
-          <label htmlFor="title">Title:</label>
-          <input
-            id="title"
-            className={styles.titleInput}
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
+          {post && (
+            <button
+              className={`btn ${styles.deleteBtn}`}
+              onClick={(e) => {
+                confirm("Are you sure you want to delete this post?");
+                handleDelete(e);
+              }}
+            >
+              {loading ? "Deleting" : "Delete (permanent)"}
+            </button>
+          )}
         </div>
-        <div className={styles.flexRow}>
-          <label htmlFor="slug">Slug:</label>
-          <input
-            id="slug"
-            className={styles.slugInput}
-            type="text"
-            value={slug}
-            onChange={(e) => setSlug(e.target.value)}
-          />
+        <div className={styles.inputsContainer}>
+          <div className={styles.flexCol}>
+            <label htmlFor="title">Title:</label>
+            <input
+              id="title"
+              className={styles.titleInput}
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          </div>
+          <div className={styles.flexRow}>
+            <label htmlFor="slug">Slug:</label>
+            <input
+              id="slug"
+              className={styles.slugInput}
+              type="text"
+              value={slug}
+              onChange={(e) => setSlug(e.target.value)}
+            />
+          </div>
+          <div className={styles.flexRow}>
+            <label htmlFor="status">Set status:</label>
+            <select
+              id="status"
+              className={styles.statusSelect}
+              value={status}
+              onChange={(e) => setStatus(e.target.value)}
+            >
+              <option value="draft">Draft</option>
+              <option value="published">Published</option>
+            </select>
+          </div>
+          <div className={styles.flexCol}>
+            <label htmlFor="content">Post content:</label>
+            <textarea
+              id="content"
+              className={styles.contentInput}
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+            >
+              {content}
+            </textarea>
+          </div>
         </div>
-        <div className={styles.flexRow}>
-          <label htmlFor="status">Set status:</label>
-          <select
-            id="status"
-            className={styles.statusSelect}
-            value={status}
-            onChange={(e) => setStatus(e.target.value)}
-          >
-            <option value="draft">Draft</option>
-            <option value="published">Published</option>
-          </select>
-        </div>
-        <div className={styles.flexCol}>
-          <label htmlFor="content">Post content:</label>
-          <textarea
-            id="content"
-            className={styles.contentInput}
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-          >
-            {content}
-          </textarea>
-        </div>
-      </div>
-    </form>
+      </form>
+    </>
   );
 };
 

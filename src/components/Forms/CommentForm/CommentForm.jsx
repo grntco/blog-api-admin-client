@@ -32,6 +32,12 @@ const CommentForm = ({ comment = null }) => {
 
   return (
     <>
+      {error && (
+        <Alert
+          alertMessage={error.error || error.message || "An error occurred."}
+          alertType="error"
+        />
+      )}
       <button
         className={`btn ${styles.deleteBtn}`}
         onClick={(e) => {

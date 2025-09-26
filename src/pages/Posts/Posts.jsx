@@ -7,6 +7,7 @@ import NoResults from "../../components/Tables/NoResults.jsx";
 import useFetch from "../../hooks/api/useFetch.jsx";
 import { useParams } from "react-router";
 import { useState, useEffect } from "react";
+import { Link } from "react-router";
 
 const Posts = () => {
   const { page } = useParams();
@@ -27,7 +28,7 @@ const Posts = () => {
 
   const posts = data.posts ?? [];
   const prevSearch = data.formData?.search;
-  console.log(prevSearch);
+
   const pageData = {
     currentPage: data.meta?.currentPage,
     totalPages: data.meta?.totalPages,
@@ -36,13 +37,20 @@ const Posts = () => {
   return (
     <div>
       <section>
+        <Alert
+          alertMessage={error?.error || error?.message || ""}
+          alertType={error ? "error" : ""}
+        />
         {validationErrors.length > 0 &&
           validationErrors.map((error, index) => {
             return (
               <Alert key={index} alertMessage={error.msg} alertType={"error"} />
             );
           })}
-        <h1>Posts</h1>
+        <Link to={"/posts/add"} className="btn">
+          Add Post
+        </Link>
+        <h1 style={{ marginTop: "1rem" }}>Posts</h1>
         <SearchForm
           path={"posts"}
           prevSearch={prevSearch}
@@ -65,7 +73,7 @@ const Posts = () => {
           />
         )}
         <PagesList
-          path={"users"}
+          path={"posts"}
           pageData={pageData}
           urlBase={urlBase}
           setUrl={setUrl}

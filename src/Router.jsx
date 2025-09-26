@@ -10,8 +10,8 @@ import Users from "./pages/Users/Users";
 import EditUser from "./pages/Users/EditUser";
 import Comments from "./pages/Comments/Comments";
 import EditComment from "./pages/Comments/EditComment";
-import Register from "./pages/Register";
 import Login from "./pages/Login";
+import NotFound from "./pages/NotFound";
 import { AuthProvider } from "./hooks/auth/AuthContext";
 
 const Router = () => {
@@ -60,10 +60,15 @@ const Router = () => {
           path: "comments/:commentId/edit",
           element: <EditComment />,
         },
-        // Auth
+        // Login
         {
           path: "login",
           element: <Login />,
+        },
+        // 404
+        {
+          path: "*", // This catches all unmatched routes
+          element: <NotFound />, // Your 404 component
         },
       ],
     },

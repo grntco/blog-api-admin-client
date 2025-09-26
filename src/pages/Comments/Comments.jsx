@@ -34,6 +34,10 @@ const Comments = () => {
   return (
     <div>
       <section>
+        <Alert
+          alertMessage={error?.error || error?.message || ""}
+          alertType={error ? "error" : ""}
+        />
         {validationErrors.length > 0 &&
           validationErrors.map((error, index) => {
             return (

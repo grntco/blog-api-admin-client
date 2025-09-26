@@ -26,7 +26,6 @@ const Users = () => {
 
   const users = data.users ?? [];
   const prevSearch = data.formData?.search;
-  console.log(prevSearch);
   const pageData = {
     currentPage: data.meta?.currentPage,
     totalPages: data.meta?.totalPages,
@@ -35,6 +34,10 @@ const Users = () => {
   return (
     <div>
       <section>
+        <Alert
+          alertMessage={error?.error || error?.message || ""}
+          alertType={error ? "error" : ""}
+        />
         {validationErrors.length > 0 &&
           validationErrors.map((error, index) => {
             return (

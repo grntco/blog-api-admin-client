@@ -11,8 +11,6 @@ const useFetch = (url) => {
       return;
     }
 
-    console.log(url)
-
     const fetchData = async () => {
       try {
         setLoading(true);

@@ -65,63 +65,71 @@ const UserForm = ({ user = null }) => {
   };
 
   return (
-    <form>
-      <div className={styles.inputsContainer}>
-        <div className={styles.flexCol}>
-          <label htmlFor="firstName">First name:</label>
-          <input
-            id="firstName"
-            className={styles.nameInput}
-            type="text"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-          />
+    <>
+      {error && (
+        <Alert
+          alertMessage={error.error || error.message || "An error occurred."}
+          alertType="error"
+        />
+      )}
+      <form>
+        <div className={styles.inputsContainer}>
+          <div className={styles.flexCol}>
+            <label htmlFor="firstName">First name:</label>
+            <input
+              id="firstName"
+              className={styles.nameInput}
+              type="text"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+            />
+          </div>
+          <div className={styles.flexCol}>
+            <label htmlFor="lastName">Last name:</label>
+            <input
+              id="lastName"
+              className={styles.nameInput}
+              type="text"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+            />
+          </div>
+          <div className={styles.flexCol}>
+            <label htmlFor="email">Email:</label>
+            <input
+              id="email"
+              className={styles.emailInput}
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className={styles.flexRow}>
+            <label htmlFor="admin">Admin:</label>
+            <input
+              id="admin"
+              type="checkbox"
+              checked={admin}
+              onChange={(e) => setAdmin((prev) => (e.checked = !prev))}
+            />
+          </div>
         </div>
-        <div className={styles.flexCol}>
-          <label htmlFor="lastName">Last name:</label>
-          <input
-            id="lastName"
-            className={styles.nameInput}
-            type="text"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-          />
+        <div className={styles.btnsContainer}>
+          <button className="btn" type="submit" onClick={handleSubmit}>
+            {loading ? "Updating" : "Update"}
+          </button>
+          <button
+            className={`btn ${styles.deleteBtn}`}
+            onClick={(e) => {
+              confirm("Are you sure you want to delete this user?");
+              handleDelete(e);
+            }}
+          >
+            {loading ? "Deleting" : "Delete (permanent)"}
+          </button>
         </div>
-        <div className={styles.flexCol}>
-          <label htmlFor="email">Email:</label>
-          <input
-            id="email"
-            className={styles.emailInput}
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div className={styles.flexRow}>
-          <label htmlFor="admin">Admin:</label>
-          <input
-            id="admin"
-            type="checkbox"
-            checked={admin}
-            onChange={(e) => setAdmin((prev) => (e.checked = !prev))}
-          />
-        </div>
-      </div>
-      <div className={styles.btnsContainer}>
-        <button className="btn" type="submit" onClick={handleSubmit}>
-          {loading ? "Updating" : "Update"}
-        </button>
-        <button
-          className={`btn ${styles.deleteBtn}`}
-          onClick={(e) => {
-            confirm("Are you sure you want to delete this user?");
-            handleDelete(e);
-          }}
-        >
-          {loading ? "Deleting" : "Delete (permanent)"}
-        </button>
-      </div>
-    </form>
+      </form>
+    </>
   );
 };
 

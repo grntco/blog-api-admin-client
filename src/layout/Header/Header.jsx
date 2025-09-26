@@ -11,18 +11,22 @@ const Header = () => {
       path: "about",
       text: "About",
     },
-    {
-      path: "posts",
-      text: "Posts",
-    },
-    {
-      path: "comments",
-      text: "Comments",
-    },
-    {
-      path: "users",
-      text: "Users",
-    },
+    ...(user && isLoggedIn
+      ? [
+          {
+            path: "posts",
+            text: "Posts",
+          },
+          {
+            path: "comments",
+            text: "Comments",
+          },
+          {
+            path: "users",
+            text: "Users",
+          },
+        ]
+      : []),
   ];
 
   const handleLogout = () => {
@@ -38,7 +42,7 @@ const Header = () => {
       <div className="container">
         <nav className={styles.nav}>
           <Link to={"/"} className={styles.logo}>
-            Blog API - Admin Dashboard
+            Admin Dashboard - Blog API
           </Link>
           <ul className={styles.navList}>
             {navLinks.map((link, index) => {

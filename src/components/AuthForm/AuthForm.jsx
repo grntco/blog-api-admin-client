@@ -12,6 +12,7 @@ const AuthForm = ({
   error,
   handleSubmit,
 }) => {
+  const USER_BLOG_URL = import.meta.env.VITE_USER_BLOG_URL;
   const btnText = type.toLowerCase() === "register" ? "Register" : "Login";
   const btnLoadingText =
     type.toLowerCase() === "register" ? "Creating Account..." : "Logging in";
@@ -68,7 +69,8 @@ const AuthForm = ({
               </span>
             ) : (
               <span>
-                Not a member? <Link to={"/register"}>Create an account</Link>.
+                Not a member?{" "}
+                <Link to={`${USER_BLOG_URL}/register`}>Create an account</Link>.
               </span>
             )}
           </p>

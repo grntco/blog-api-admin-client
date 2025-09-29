@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
 
 const useFetch = (url) => {
   const [data, setData] = useState({});
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!url) {
@@ -26,6 +28,17 @@ const useFetch = (url) => {
           method: "GET",
           headers,
         });
+
+        if (response.status === 429) {
+          const errorData = await response.json();
+          navigate("/", {
+            state: {
+              message: errorData.message || "Too many requests.",
+              type: "error",
+            },
+          });
+          return;
+        }
 
         const data = await response.json();
 

@@ -2,24 +2,26 @@ import { Link } from "react-router";
 import Alert from "../components/Alert/Alert";
 
 const Home = () => {
+  const USER_BLOG_URL = import.meta.env.VITE_ADMIN_BLOG_URL;
+
   return (
     <section>
       <Alert />
       <div className="content">
-        <h1>Welcome to the blog!</h1>
+        <h1>Welcome to the Admin Dashboard!</h1>
         <p>
-          Hi there! This is a blog project created for The Odin Project's
-          Node.js course. The purpose of this project was to to create a REST
-          API using Node.js and Express.
+          This is a project created for The Odin Project&#39;s Node.js course to
+          build an{" "}
+          <a href="https://www.theodinproject.com/lessons/node-path-nodejs-blog-api">
+            API server
+          </a>{" "}
+          and two front-end websites (this one and a public{" "}
+          <a href={USER_BLOG_URL}>User Blog</a>) to make requests to the API
+          endpoints to view and manage blog posts, comments, and users.
         </p>
         <p>
-          While users of this blog are free to view posts and comments, they
-          must create an account to post a comment (an action that calls an API
-          endpoint that is restricted only to members of this blog).
-        </p>
-        <p>
-          The same API is used by a different website for the admin dashboard.
-          There, the admin (me) can create posts and manage users and comments.
+          The server is built with Node.js and Express, and both front-end sites
+          in React.
         </p>
         <p>
           To learn more about the whole project and how it is built, visit the{" "}
